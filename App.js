@@ -1,53 +1,66 @@
 // In App.js in a new project
+import 'react-native-gesture-handler';
+
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator, } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Entypo } from '@expo/vector-icons'; 
 
-import Todos from './Todos';
+import Home from './Home';
 import Detail from './Detail';
 import { Button } from 'react-native';
+import NewPost from './NewPost';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+const Drawer = createDrawerNavigator();
 
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Todos"
-          component={Todos}
-          options={{
-            title: 'My Custom home',
-            headerRight: () => (
-            <Button
-              onPress={() => alert('This is a button!')}
-              title="Info"
-              color="#000"
-            />
-          ),
-          }} />
-        
-        <Stack.Screen name="Detail" component={Detail} options={({ route }) => ({ title: route.params.title })} />
+        <Stack.Navigator>
+      
+      
+        <Stack.Screen name="Home" component={Home}  />
+        <Stack.Screen name="NewPost" component={NewPost}  />
+        <Stack.Screen name="Detail" component={Detail}  />
       </Stack.Navigator>
-    
+      
     </NavigationContainer>
   );
 }
 
-function Home() {
-  return (
-    <Tab.Navigator>
-      <Tab.Screen name="Feed" component={Todos} />
-      <Tab.Screen name="Detail" component={Detail}  />
-    </Tab.Navigator>
-  );
-}
+// function StackNavBar() {
+//   return (
+//     <Stack.Navigator
+      
+//     >
+//         <Stack.Screen
+//           name="Bottom"
+//           component={BottomNavBar}
+//         />
+      
+        
+//         <Stack.Screen name="NewPost" component={NewPost}  />
+//         <Stack.Screen name="Detail" component={Detail}  />
+//       </Stack.Navigator>
+//   )
+// }
+// function BottomNavBar() {
+//   return (
+//     <Tab.Navigator  
+//       screenOptions={{
+//         tabBarShowLabel: false,
+//         headerShown:false
+//       }}
+    
+//     >
+//       <Tab.Screen name="Feed" component={Home} options={{ tabBarIcon: ({ color, size }) => <Entypo name="home" size={size} color={color} />}}/>
+//       <Tab.Screen name="Detail" component={Detail} options={{ tabBarIcon: ({ color, size }) => <Entypo name="notification" size={size} color={color} />}}/>
+//     </Tab.Navigator>
+//   );
+// }
 
 export default App;
