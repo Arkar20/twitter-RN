@@ -21,7 +21,8 @@ const data = [
     title: 'Hello world 4'
   },
 ];
-const PostSingle = ({title,navigation}) => {
+const PostSingle = ({ title, navigation }) => {
+  
   return (
     <View style={styles.container}>
 
@@ -47,7 +48,7 @@ const PostSingle = ({title,navigation}) => {
                     9m
                 </Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.cardparacontainer}>
+          <TouchableOpacity style={styles.cardparacontainer} onPress={()=>navigation.navigate('Detail')}>
               <Text style={styles.cardparatext}>
                     Sunt tempor proident fugiat culpa sit Lorem in ex. Minim aliquip amet do eiusmod ipsum minim laboris amet nulla. Commodo ut do nisi sint est voluptate eu dolore ullamco est. Quis deserunt deserunt et commodo est est dolor exercitation. Officia dolor aliquip pariatur aliquip adipisicing sunt veniam. Duis non quis ut magna cillum culpa.
                 </Text>
@@ -97,9 +98,10 @@ export default function Todos({navigation}) {
 
   return (
     <SafeAreaView>
+
       <FlatList
         data={data }
-        renderItem={({item})=><PostSingle />}
+        renderItem={({ item }) => <PostSingle navigation={navigation}/>}
         keyExtractor={item=>item.id }
       />
 
@@ -113,7 +115,14 @@ export default function Todos({navigation}) {
 const styles = StyleSheet.create({
   textspacing1: {
       marginLeft:3
-  },  
+  }, 
+  avatar: {
+    width: 46,
+    height: 46,
+    borderRadius: 23,
+    marginRight:8
+
+  },
 
   socailContainer: {
     marginTop:10,
@@ -136,13 +145,7 @@ const styles = StyleSheet.create({
   cardtitle: {
     flexDirection:'row'
   },
-  avatar: {
-    width: 46,
-    height: 46,
-    borderRadius: 23,
-    marginRight:8
-
-  },
+  
   
   cardheader: {
     fontWeight:"700"

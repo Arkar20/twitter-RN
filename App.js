@@ -20,34 +20,34 @@ const Drawer = createDrawerNavigator();
 function App() {
   return (
     <NavigationContainer>
-        <Stack.Navigator>
-      
-      
-        <Stack.Screen name="Home" component={Home}  />
-        <Stack.Screen name="NewPost" component={NewPost}  />
-        <Stack.Screen name="Detail" component={Detail}  />
-      </Stack.Navigator>
+         <Drawer.Navigator>
+          <Drawer.Screen name="Home" component={StackNavBar} />
+          <Drawer.Screen name="Detail" component={Detail} />
+        {/* <Drawer.Screen name="Article" component={Article} /> */}
+        
+    </Drawer.Navigator>
       
     </NavigationContainer>
   );
 }
 
-// function StackNavBar() {
-//   return (
-//     <Stack.Navigator
-      
-//     >
-//         <Stack.Screen
-//           name="Bottom"
-//           component={BottomNavBar}
-//         />
-      
+function StackNavBar() {
+  return (
+    <Stack.Navigator
+        screenOptions={{
+        headerBackTitleVisible: false,
+          
         
-//         <Stack.Screen name="NewPost" component={NewPost}  />
-//         <Stack.Screen name="Detail" component={Detail}  />
-//       </Stack.Navigator>
-//   )
-// }
+        }}
+      >
+      
+      
+        <Stack.Screen name="Home" component={Home} options={{headerShown:false}} />
+        <Stack.Screen name="NewPost" component={NewPost}  />
+        <Stack.Screen name="Detail" component={Detail} options={{title:""}} />
+      </Stack.Navigator>
+  )
+}
 // function BottomNavBar() {
 //   return (
 //     <Tab.Navigator  
