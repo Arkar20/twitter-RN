@@ -13,6 +13,8 @@ import Home from './Home';
 import Detail from './Detail';
 import { Button } from 'react-native';
 import NewPost from './NewPost';
+import Profile from './Profile';
+
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
@@ -23,6 +25,7 @@ function App() {
          <Drawer.Navigator>
           <Drawer.Screen name="Home" component={StackNavBar} />
           <Drawer.Screen name="Detail" component={Detail} />
+          <Drawer.Screen name="Profile" component={Profile} />
         {/* <Drawer.Screen name="Article" component={Article} /> */}
         
     </Drawer.Navigator>
@@ -45,6 +48,7 @@ function StackNavBar() {
         <Stack.Screen name="Home" component={Home} options={{headerShown:false}} />
         <Stack.Screen name="NewPost" component={NewPost}  />
         <Stack.Screen name="Detail" component={Detail} options={{title:""}} />
+        <Stack.Screen name="Profile" component={Profile} options={{title:""}} />
       </Stack.Navigator>
   )
 }

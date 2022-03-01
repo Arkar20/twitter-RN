@@ -1,8 +1,6 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, SafeAreaView,Text, View, Button,TextInput, TouchableOpacity,FlatList,ScrollView,Image} from 'react-native';
+import { StyleSheet, SafeAreaView, FlatList } from 'react-native';
+import PostSingle from './components/PostSingle';
 import { useState,useEffect } from "react";
-import AddIcon from "./AddIcon";
-import { MaterialIcons,Entypo,AntDesign } from '@expo/vector-icons';
 const data = [
   {
     id: 1,
@@ -21,62 +19,6 @@ const data = [
     title: 'Hello world 4'
   },
 ];
-const PostSingle = ({ title, navigation }) => {
-  
-  return (
-    <View style={styles.container}>
-
-        <View style={styles.card}>
-            <Image
-                style={styles.avatar}
-                 source={{
-                  uri: 'https://images.pexels.com/photos/5961416/pexels-photo-5961416.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-                }}
-          />
-          <View style={styles.cardbody}>
-            <TouchableOpacity style={styles.cardtitle}>
-                <Text style={styles.cardheader}>
-                    Arkar
-                </Text>
-                <Text style={styles.cardspan}>
-                    @arkar
-                </Text>
-                <Text>
-                    &middot;
-                </Text>
-                <Text style={styles.cardspan}>
-                    9m
-                </Text>
-            </TouchableOpacity>
-          <TouchableOpacity style={styles.cardparacontainer} onPress={()=>navigation.navigate('Detail')}>
-              <Text style={styles.cardparatext}>
-                    Sunt tempor proident fugiat culpa sit Lorem in ex. Minim aliquip amet do eiusmod ipsum minim laboris amet nulla. Commodo ut do nisi sint est voluptate eu dolore ullamco est. Quis deserunt deserunt et commodo est est dolor exercitation. Officia dolor aliquip pariatur aliquip adipisicing sunt veniam. Duis non quis ut magna cillum culpa.
-                </Text>
-            </TouchableOpacity>
-            <View style={styles.socailContainer}>
-
-              <View style={styles.socialSingle}>
-                  <AntDesign name="hearto" size={20} color="gray" />
-                <Text style={styles.textspacing1}>12</Text>
-              </View>
-
-              <View style={styles.socialSingle}>
-                  <MaterialIcons name="comment" size={20} color="gray" />
-                <Text style={styles.textspacing1}>12</Text>
-              </View>
-
-              <View style={styles.socialSingle}>
-                <Entypo name="share" size={18} color="gray" />
-              </View>
-
-            </View>
-          </View>
-        </View>
-        
-      
-      </View>
-  
-) }
 
 
 export default function Todos({navigation}) {
