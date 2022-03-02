@@ -1,6 +1,7 @@
-import { StyleSheet, SafeAreaView, FlatList } from 'react-native';
+import { StyleSheet, SafeAreaView, FlatList ,TouchableOpacity} from 'react-native';
 import PostSingle from './components/PostSingle';
 import { useState,useEffect } from "react";
+import { AntDesign } from '@expo/vector-icons';
 const data = [
   {
     id: 1,
@@ -46,10 +47,10 @@ export default function Todos({navigation}) {
         renderItem={({ item }) => <PostSingle navigation={navigation}/>}
         keyExtractor={item=>item.id }
       />
+      <TouchableOpacity style={styles.fab} onPress={()=>navigation.navigate('NewPost')}>
+          <AntDesign name="plus" size={30} color="white" />
+      </TouchableOpacity>
 
-      
-        
-       
       </SafeAreaView>
   );
 }
@@ -105,6 +106,19 @@ const styles = StyleSheet.create({
   cardparatext: {
     
     lineHeight:17,
+  },
+  fab: {
+    width: 50,
+    height: 50,
+    backgroundColor: "blue",
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 25,
+    position: 'absolute',
+    bottom: 10,
+    right: 10,
+    zIndex:99
   }
   
 });

@@ -20,10 +20,10 @@ const data = [
     title: 'Hello world 4'
   },
 ];
-export default function ({navigation}) {
-  return (
-    <ScrollView>
-      <View style={styles.bgimg}></View>
+export default function ({ navigation }) {
+  const HeaderSection = (
+    <>
+        <View style={styles.bgimg}></View>
       <View style={styles.avatarContainer}>
         <Image
                 style={styles.avatar}
@@ -75,15 +75,21 @@ export default function ({navigation}) {
           
         </View>
 
-          <FlatList
-        data={data}
-        renderItem={({ item }) => <PostSingle navigation={navigation}/>}
-        keyExtractor={item=>item.id }
-      />
+        
   
 
       </View>
-    </ScrollView>
+    </>
+  )
+  return (
+    <View>
+      <FlatList
+          ListHeaderComponent={HeaderSection}
+          data={data}
+            renderItem={({ item }) => <PostSingle navigation={navigation} key={item.id}/>}
+          keyExtractor={item=>item.id }
+      />
+    </View>
   )
 }
 const styles = StyleSheet.create({
